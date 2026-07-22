@@ -1,0 +1,7 @@
+# Tăng giới hạn upload mặc định của PHP (áp dụng khi chạy qua Apache/XAMPP với mod_php)
+# Mặc định PHP chỉ cho phép upload 2MB, khiến ảnh đại diện từ điện thoại/máy ảnh (thường 3-8MB)
+# bị từ chối âm thầm. Nâng lên 10MB để khớp với giới hạn đã công bố cho tệp đính kèm cuộc họp.
+php_value upload_max_filesize 10M
+php_value post_max_size 12M
+php_value max_execution_time 120
+php_value max_input_time 120
