@@ -24,7 +24,7 @@ $__sidebarMenu = [
 <aside class="sidebar" id="sidebar">
     <div class="brand">
         <span class="icon"><i class="fa-solid fa-users"></i></span>
-        HRM System
+        XYZ System
     </div>
     <nav>
         <?php foreach ($__sidebarMenu as $__sidebarMenuItem): ?>
