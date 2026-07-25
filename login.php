@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Đăng nhập - HRM System</title>
+<title>Đăng nhập - XYZ System</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="login-wrap">
     <div class="login-card">
-        <div class="brand"><span class="icon"><i class="fa-solid fa-users"></i></span> HRM System</div>
+        <div class="brand"><span class="icon"><i class="fa-solid fa-users"></i></span> XYZ System</div>
         <p class="sub">Đăng nhập vào hệ thống quản lý nhân sự</p>
 
         <?php if ($error): ?>
