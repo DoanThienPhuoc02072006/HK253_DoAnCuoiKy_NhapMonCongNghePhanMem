@@ -53,13 +53,40 @@ include __DIR__ . '/includes/head_meta.php';
                         <div class="form-group"><label>Thời gian bắt đầu</label><input value="<?= format_date($meeting['thoi_gian_bat_dau'], true) ?>" disabled></div>
                         <div class="form-group"><label>Thời gian kết thúc</label><input value="<?= format_date($meeting['thoi_gian_ket_thuc'], true) ?>" disabled></div>
                         <div class="form-group" style="grid-column:1/-1;"><label>Mục đích / Nội dung</label><textarea disabled><?= e($meeting['noi_dung']) ?></textarea></div>
-                        <?php if ($meeting['ghi_chu']): ?>
+                        <?php if (!empty($meeting['ghi_chu'])): ?>
                         <div class="form-group" style="grid-column:1/-1;"><label>Ghi chú</label><textarea disabled><?= e($meeting['ghi_chu']) ?></textarea></div>
                         <?php endif; ?>
                     </div>
 
+                    <!-- KHU VỰC HIỂN THỊ FILE ĐÍNH KÈM (ĐÃ CHÈN ĐÚNG VỊ TRÍ) -->
+                    <div class="form-group" style="margin-top:15px;">
+                        <label style="font-size:13.5px;font-weight:600;margin-bottom:8px;display:block;">Tài liệu đính kèm</label>
+                        <?php if (!empty($meeting['tep_dinh_kem'])): ?>
+                            <div class="attachment-box" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;">
+                                <div style="display:flex;align-items:center;gap:12px;overflow:hidden;">
+                                    <i class="fa-solid fa-file-lines" style="font-size:22px;color:#2563eb;"></i>
+                                    <span style="font-weight:500;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px;" title="<?= e($meeting['tep_dinh_kem']) ?>">
+                                        <?= e($meeting['tep_dinh_kem']) ?>
+                                    </span>
+                                </div>
+                                <div style="display:flex;gap:8px;">
+                                    <a href="uploads/attachments/<?= e($meeting['tep_dinh_kem']) ?>" target="_blank" class="btn" style="padding:6px 12px;font-size:13px;" title="Xem/Mở">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem
+                                    </a>
+                                    <a href="uploads/attachments/<?= e($meeting['tep_dinh_kem']) ?>" download class="btn btn-primary" style="padding:6px 12px;font-size:13px;">
+                                        <i class="fa-solid fa-download"></i> Tải về
+                                    </a>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <div style="padding:10px 14px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:6px;color:var(--gray-500);font-size:13.5px;">
+                                <i class="fa-regular fa-folder-open" style="margin-right:6px;"></i> Không có tài liệu nào được đính kèm cho cuộc họp này.
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
                     <?php if ($meeting['trang_thai'] !== 'Đã hủy'): ?>
-                    <form method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn hủy cuộc họp này?');">
+                    <form method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn hủy cuộc họp này?');" style="margin-top:20px;">
                         <input type="hidden" name="action" value="huy">
                         <div class="form-actions">
                             <a href="calendar.php" class="btn">Quay lại</a>
@@ -67,7 +94,7 @@ include __DIR__ . '/includes/head_meta.php';
                         </div>
                     </form>
                     <?php else: ?>
-                        <div class="form-actions"><a href="calendar.php" class="btn">Quay lại</a></div>
+                        <div class="form-actions" style="margin-top:20px;"><a href="calendar.php" class="btn">Quay lại</a></div>
                     <?php endif; ?>
                 </div>
 
@@ -89,6 +116,7 @@ include __DIR__ . '/includes/head_meta.php';
         </div>
     </div>
 </div>
+
 <script src="assets/js/main.js"></script>
 </body>
 </html>
